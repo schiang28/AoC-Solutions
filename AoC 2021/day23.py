@@ -2,7 +2,7 @@ A = [7, 8, 4, 5, 28]
 B = [5, 5, 4, 5, 19]
 C = [21, 6]
 D = [5, 9, 33]
-# by hand lol, just some notes here ^
+# by hand, just some notes here ^
 
 """
 #############

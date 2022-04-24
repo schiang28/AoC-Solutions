@@ -14,7 +14,6 @@ with open("day24input.txt") as f:
 # therefore u can then find how pairs of digits in the model number related to each other
 # e.g 4th digit had to equal 5th digit; for the largest model these 2 digits would be 9
 # working out largest and smallest model number was therefore trivial from here
-# well at least i could use my code to check the worked out answer :/
 
 code = 99999999999999
 
