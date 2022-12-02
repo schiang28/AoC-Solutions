@@ -1,7 +1,7 @@
 with open("day2input.txt") as f:
     file = f.read().splitlines()
 
-# harcoded solution
+# hard-coded solution
 
 total = 0
 for game in file:
