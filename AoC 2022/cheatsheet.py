@@ -24,3 +24,9 @@ file = [[list(map(int, i.split())) for i in j] for j in file]
 
 # removes all empty entries in a list
 print([x for x in file if x])
+
+# groupby unique elements(string)
+[k for k, g in groupby("AAAABBBCCDAABBB")]  # --> ['A', 'B', 'C', 'D', 'A', 'B']
+[
+    list(g) for k, g in groupby("AAAABBBCCD")
+]  # --> [['A', 'A', 'A', 'A'], ['B', 'B', 'B'], ['C', 'C'], ['D']]
