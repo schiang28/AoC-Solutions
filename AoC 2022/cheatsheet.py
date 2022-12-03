@@ -30,3 +30,9 @@ print([x for x in file if x])
 [
     list(g) for k, g in groupby("AAAABBBCCD")
 ]  # --> [['A', 'A', 'A', 'A'], ['B', 'B', 'B'], ['C', 'C'], ['D']]
+
+# convert binary to denary
+x = "10110"
+print(int(x, 2))
+x = "{0:b}".format(37)  # convert int to binary
+
