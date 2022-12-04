@@ -37,3 +37,7 @@ print(int(x, 2))
 x = "{0:b}".format(37)  # convert int to binary
 
 # set operations union()/|, intersection()/&, difference()/- e.g. x1.difference(x2, x3)
+# alphabet abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+# prints most common character in string
+print(max(set(t), key=t.count))
