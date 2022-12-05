@@ -22,5 +22,4 @@ for step in steps:
     temp = temp[::-1]  # <- delete for part 1
     stacks[n3] += temp
 
-for k, v in stacks.items():
-    print(v[-1], end="")
+print("".join([v[-1] for v in stacks.values()]))
