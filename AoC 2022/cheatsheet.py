@@ -1,8 +1,7 @@
 import re
-from itertools import combinations
-from math import sqrt
-from collections import Counter
-from itertools import groupby
+from itertools import combinations, permutations, groupby
+from collections import Counter, defaultdict
+import networkx
 
 with open("dayxinput.txt") as f:
     # list of integers
