@@ -19,10 +19,9 @@ for instruction in file:
         cycle += 1
         a1, cpt = a1 + check_cycle(cycle, X), cpt + draw_cpt(len(cpt))
     else:
-        cycle += 1
-        a1, cpt = a1 + check_cycle(cycle, X), cpt + draw_cpt(len(cpt))
-        cycle += 1
-        a1, cpt = a1 + check_cycle(cycle, X), cpt + draw_cpt(len(cpt))
+        for _ in range(2):
+            cycle += 1
+            a1, cpt = a1 + check_cycle(cycle, X), cpt + draw_cpt(len(cpt))
         X += int(instruction.split(" ")[1])
     sprite = [X, X - 1, X + 1]
 
