@@ -1,44 +1,54 @@
-with open("day10input.txt") as f:
-    file = f.read().splitlines()
-X, cycle, a1, cpt, sprite = 1, 0, 0, "", [0, 1, 2]
+monkeys = {0: [54, 98, 50, 94, 69, 62, 53, 85], 1: [71, 55, 82], 2: [77, 73, 86, 72, 87], 3:[97, 91], 4: [78, 97, 51, 85, 66, 63, 62], 5: [88], 6: [87, 57, 63, 86, 87, 53], 7: [73, 59, 82, 65]}
+moves = {0: lambda x : x*13, 1: lambda x:x+2, 2:lambda x: x+8, 3:lambda x: x+1, 4: lambda x:x*17, 5: lambda x:x+3, 6: lambda x: x*x, 7: lambda x: x+6}
+inspect = {i:0 for i in range(len(monkeys))}
+prod = 2*3*5*7*11*13*17*19
 
+for _ in range(10000):
+    for i in range(len(monkeys)):
+        for item in range(len(monkeys[i])):
+            old = monkeys[i].pop(0)
+            new = moves[i](old)
+            if i==0:
+                if new % 3 == 0:
+                    monkeys[2].append(new%prod)
+                else:
+                    monkeys[1].append(new%prod)
+            elif i==1:
+                if new % 13 == 0:
+                    monkeys[7].append(new%prod)
+                else:
+                    monkeys[2].append(new%prod)
+            elif i==2:
+                if new % 19 == 0:
+                    monkeys[4].append(new%prod)
+                else:
+                    monkeys[7].append(new%prod)
+            elif i==3:
+                if new % 17 == 0:
+                    monkeys[6].append(new%prod)
+                else:
+                    monkeys[5].append(new%prod)
+            elif i==4:
+                if new % 5 ==0:
+                    monkeys[6].append(new%prod)
+                else:
+                    monkeys[3].append(new%prod)
+            elif i==5:
+                if new %7==0:
+                    monkeys[1].append(new%prod)
+                else:
+                    monkeys[0].append(new%prod)
+            elif i==6:
+                if new % 11==0:
+                    monkeys[5].append(new%prod)
+                else:
+                    monkeys[0].append(new%prod)
+            else:
+                if new %2==0:
+                    monkeys[4].append(new%prod)
+                else:
+                    monkeys[3].append(new%prod)
+            inspect[i] += 1
 
-def draw(l, sprite):
-    if l & 40 in sprite:
-        cpt += "#"
-    else:
-        cpt += "."
-
-
-for instruction in file:
-    if instruction == "noop":
-        cycle += 1
-        if cycle in [20, 60, 100, 140, 180, 220]:
-            a1 += cycle * X
-        if len(cpt) % 40 in sprite:
-            cpt += "#"
-        else:
-            cpt += "."
-    else:
-        p1, p2 = instruction.split(" ")[0], int(instruction.split(" ")[1])
-        cycle += 1
-
-        if len(cpt) % 40 in sprite:
-            cpt += "#"
-        else:
-            cpt += "."
-        if cycle in [20, 60, 100, 140, 180, 220]:
-            a1 += cycle * X
-        cycle += 1
-
-        if len(cpt) % 40 in sprite:
-            cpt += "#"
-        else:
-            cpt += "."
-        if cycle in [20, 60, 100, 140, 180, 220]:
-            a1 += cycle * X
-        X += p2
-    sprite = [X, X - 1, X + 1]
-
-print(a1)
-print(*[cpt[i : i + 40] for i in range(0, len(cpt), 40)], sep="\n")
+s = sorted(inspect.values())
+print(s[-1]*s[-2])
