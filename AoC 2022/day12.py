@@ -20,7 +20,7 @@ for r in range(len(file)):
                     G.add_edge((r, c), (dr, dc))
                 elif current == "E" or current == "y":
                     G.add_edge((r, c), (dr, dc))
-                elif lvls[lvls.index(current)+1] == file[dr][dc] or lvls.index(file[dr][dc]) <= lvls.index(current):
+                elif lvls.index(file[dr][dc]) <= lvls.index(current) + 1:
                     G.add_edge((r, c), (dr, dc))
 
 for start in starts:
