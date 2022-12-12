@@ -9,6 +9,7 @@ with open("dayxinput.txt") as f:
     # list of strings
     file = f.read().splitlines()
 
+'''
 # splits list on empty entries
 file = ["jeff", "ham", "boat", "", "my", "name", "hello", "", "hello", "world"]
 # groups by whitespace
@@ -40,3 +41,4 @@ x = "{0:b}".format(37)  # convert int to binary
 
 # prints most common character in string
 print(max(set(t), key=t.count))
+'''
