@@ -16,11 +16,11 @@ for r in range(len(file)):
         for d in deltas:
             dr, dc, current = r + d[0], c + d[1], file[r][c]
             if 0 <= dr < len(file) and 0 <= dc < len(file[r]):
-                if current == "S" and (file[dr][dc] == "a" or file[dr][dc] == "b"):
-                    G.add_edge((r, c), (dr, dc))
-                elif current == "E" or current == "y":
-                    G.add_edge((r, c), (dr, dc))
-                elif lvls.index(file[dr][dc]) <= lvls.index(current) + 1:
+                if (
+                    (current == "S" and (file[dr][dc] == "a" or file[dr][dc] == "b")) or
+                    (current == "E" or current == "y") or
+                    (lvls.index(file[dr][dc]) <= lvls.index(current) + 1)
+                ):
                     G.add_edge((r, c), (dr, dc))
 
 for start in starts:
