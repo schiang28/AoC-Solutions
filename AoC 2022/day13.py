@@ -38,8 +38,8 @@ def compare(left, right):
                 return False
 
 def bubble_sort(packets):
-    swapped = False
     for n in range(len(packets)-1, 0, -1):
+        swapped = False
         for i in range(n):
             if compare(packets[i], packets[i + 1]) == False:
                 swapped = True
