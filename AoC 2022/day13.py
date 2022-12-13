@@ -15,22 +15,16 @@ def compare(left, right):
                     return False
             elif isinstance(left[i], int) and isinstance(right[i], list):
                 state = compare([left[i]], right[i])
-                if state:
-                    return True
-                if state == False:
-                    return False
+                if state != None:
+                    return state
             elif isinstance(left[i], list) and isinstance(right[i], int):
                 state = compare(left[i], [right[i]])
-                if state:
-                    return True
-                if state == False:
-                    return False
+                if state != None:
+                    return state
             else:
                 state = compare(left[i], right[i])
-                if state:
-                    return True
-                if state == False:
-                    return False
+                if state != None:
+                    return state
         else:
             if i >= len(left):
                 return True
