@@ -7,7 +7,7 @@ distance = {s: abs(s[0] - b[0]) + abs(s[1] - b[1]) for s, b in S.items()}
 level, maxxy, c1, c2, bx, by = 2000000, 4000000, set(), set(), 0, 0
 
 for s, b in S.items():
-    d = abs(s[0] - b[0]) + abs(s[1] - b[1])
+    d = distance[s]
     if s[1] - d <= level <= s[1] + d + 1:
         for i in range(s[1] - d, s[1] + d + 1):
             if i == level:
