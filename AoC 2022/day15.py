@@ -17,16 +17,15 @@ for s, b in S.items():
                     if coord not in S.keys() and coord not in S.values():
                         NB.add(coord)
 
-for s, d in distance.items():
-    c1.update([s[1] - s[0] + d + 1, s[1] - s[0] - d - 1])
-    c2.update([s[0] + s[1] + d + 1, s[0] + s[1] - d - 1])
+[c1.update([s[1] - s[0] + d + 1, s[1] - s[0] - d - 1]) for s, d in distance.items()]
+[c2.update([s[0] + s[1] + d + 1, s[0] + s[1] - d - 1]) for s, d in distance.items()]
 
 for i in c1:
     for j in c2:
-        intersect = ((j - i) // 2, (i + j) // 2)
-        if 0 < intersect[0] < maxxy and 0 < intersect[1] < maxxy:
-            if all(abs(intersect[0]-k[0]) + abs(intersect[1]-k[1]) > distance[k] for k in S.keys()):
-                bx, by = intersect[0], intersect[1]
+        ix, iy = (j - i) // 2, (i + j) // 2
+        if 0 < ix < maxxy and 0 < iy < maxxy:
+            if all(abs(ix-k[0]) + abs(iy-k[1]) > distance[k] for k in S.keys()):
+                bx, by = ix, iy
 
 print(len(NB))
 print(bx * maxxy + by)
