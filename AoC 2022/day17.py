@@ -23,8 +23,9 @@ for r in range(1000000000000):
 
     state = r % 5, count % len(file)
     if state in cycle:
-        if 1000000000000 - r % cycle[state][0] - r == 0:
-            print(height + (cycle[state][1] - height) * (1000000000000 - r // cycle[state][0] - r))
+        d, m = divmod(1000000000000 - r, cycle[state][0] - r)
+        if m == 0:
+            print(height + (cycle[state][1] - height) * d)
             break
     else:
         cycle[state] = r, height
