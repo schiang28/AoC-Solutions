@@ -20,7 +20,6 @@ def down(r):
 
 for r in range(1000000000000):
     rock = [(i[0], i[1] + height + 4) for i in shapes[r % 5]]
-
     state = r % 5, count % len(file)
     if state in cycle:
         d, m = divmod(1000000000000 - r, cycle[state][0] - r)
@@ -39,7 +38,6 @@ for r in range(1000000000000):
             if clear(left(rock)):
                 rock = left(rock)
         count += 1
-
         if clear(down(rock)):
             rock = down(rock)
         else:
