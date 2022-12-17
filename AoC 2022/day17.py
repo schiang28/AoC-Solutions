@@ -1,15 +1,10 @@
 with open("day17input.txt") as f:
     file = f.read().splitlines()[0]
 rocks, height, count, cycle = set(), 0, 0, {}
-shapes = [[(3,0), (4,0), (5,0), (6,0)],
-          [(3,1), (4,1), (5,1), (4,0), (4,2)],
-          [(3,0), (4,0), (5,0), (5,1), (5,2)],
-          [(3,0), (3,1), (3,2), (3,3)],
-          [(3,0), (3,1), (4,0), (4,1)]]
+shapes = [[(3,0), (4,0), (5,0), (6,0)], [(3,1), (4,1), (5,1), (4,0), (4,2)], [(3,0), (4,0), (5,0), (5,1), (5,2)], [(3,0), (3,1), (3,2), (3,3)], [(3,0), (3,1), (4,0), (4,1)]]
 
 def clear(r):
-    if (any(i[0] > 7 for i in r) or any(i[0] < 1 for i in r) or
-        any(i in rocks for i in r) or any(i[1] <= 0 for i in r)):
+    if any(i[0] > 7 for i in r) or any(i[0] < 1 for i in r) or any(i in rocks for i in r) or any(i[1] <= 0 for i in r):
         return False
     return True
 
@@ -28,9 +23,8 @@ for r in range(1000000000000):
 
     state = r % 5, count % len(file)
     if state in cycle:
-        d, m = divmod(1000000000000 - r, cycle[state][0] - r)
-        if m == 0:
-            print(height + (cycle[state][1] - height) * d)
+        if 1000000000000 - r % cycle[state][0] - r == 0:
+            print(height + (cycle[state][1] - height) * (1000000000000 - r // cycle[state][0] - r))
             break
     else:
         cycle[state] = r, height
