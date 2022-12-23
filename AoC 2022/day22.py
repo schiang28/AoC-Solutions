@@ -34,20 +34,7 @@ for i in moves:
             tempd = dire
             tempx = x + dx
             if tempx >= len(plane[y]):
-                # tempx -= lx
-                if 0<=y<=size-1:
-                    tempy = size*3-1-y
-                    tempx = size*2-1
-                    tempd = "L"
-                elif size<=y<=size*2-1:
-                    tempy = size-1
-                    tempx = y
-                    tempd = "U"
-                elif size*2<=y<=size*3-1:
-                    tempx = size*3-1
-                    tempy = size*3-1-y
-                else:
-                    pass
+                tempx -= lx
             elif tempx < (len(plane[y])-lx):
                 tempx %= lx
             tempy = y + dy
