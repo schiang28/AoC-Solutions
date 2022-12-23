@@ -2,6 +2,7 @@ with open("day22input.txt") as f:
     file = f.read().splitlines()
 plane, ins, direction = file[:-2], file[-1], "RDLU"
 x, y, dire = plane[0].index("."), 0, direction[0]
+size = 50
 
 moves, temp = [], ""
 for i in ins:
@@ -30,9 +31,23 @@ for i in moves:
             dx, dy = 0,-1
 
         for _ in range(int(i)):
+            tempd = dire
             tempx = x + dx
             if tempx >= len(plane[y]):
-                tempx -= lx
+                # tempx -= lx
+                if 0<=y<=size-1:
+                    tempy = size*3-1-y
+                    tempx = size*2-1
+                    tempd = "L"
+                elif size<=y<=size*2-1:
+                    tempy = size-1
+                    tempx = y
+                    tempd = "U"
+                elif size*2<=y<=size*3-1:
+                    tempx = size*3-1
+                    tempy = size*3-1-y
+                else:
+                    pass
             elif tempx < (len(plane[y])-lx):
                 tempx %= lx
             tempy = y + dy
@@ -46,6 +61,7 @@ for i in moves:
             if plane[tempy][tempx] == "#":
                 break
             else:
+                dire = tempd
                 x, y = tempx, tempy
 
 p = {"R": 0, "D": 1, "L":2, "U":3}
